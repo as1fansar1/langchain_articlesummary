@@ -59,17 +59,7 @@ dec1_langchain/
    pip3 install -r requirements.txt
    ```
 
-3. **Create `.env` file**:
-   ```bash
-   cp .env.example .env
-   ```
-
-4. **Add your Groq API key** to `.env`:
-   ```
-   GROQ_API_KEY=your_actual_groq_api_key_here
-   ```
-
-5. **Start the backend server**:
+3. **Start the backend server**:
    ```bash
    python3 -m uvicorn main:app --reload
    ```
