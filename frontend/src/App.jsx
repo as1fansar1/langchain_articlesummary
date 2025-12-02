@@ -132,12 +132,15 @@ function App() {
             display: 'inline-block',
             padding: '0.5rem 1rem',
             borderRadius: '20px',
-            background: result.content_type === 'youtube' ? 'linear-gradient(135deg, #ff0000, #ff4444)' : 'linear-gradient(135deg, #00ffff, #0088ff)',
+            background: result.content_type === 'youtube' ? '#F38181' : '#95E1D3',
+            color: result.content_type === 'youtube' ? '#fff' : '#2c3e50',
             marginBottom: '1rem',
             fontSize: '0.9rem',
-            fontWeight: '600',
+            fontWeight: '700',
             textTransform: 'uppercase',
-            letterSpacing: '0.05em'
+            letterSpacing: '0.05em',
+            border: '2px solid rgba(0,0,0,0.1)',
+            boxShadow: '4px 4px 0 rgba(0,0,0,0.1)'
           }}>
             {result.content_type === 'youtube' ? '📺 YouTube Video' : '📄 Article'}
           </div>
@@ -161,7 +164,7 @@ function App() {
       {result && sessionId && (
         <div className="qa-section" style={{ marginTop: '2rem' }}>
           <h2>💬 Ask Questions About This Content</h2>
-          <p style={{ marginBottom: '1rem', color: '#aaa' }}>
+          <p style={{ marginBottom: '1rem', color: '#7f8c8d' }}>
             Ask follow-up questions about the summarized content. The AI remembers the context and our conversation.
           </p>
 
@@ -191,22 +194,16 @@ function App() {
             <div className="conversation">
               <h3>Conversation History</h3>
               {conversation.map((item, index) => (
-                <div key={index} className="qa-pair" style={{
-                  marginBottom: '1.5rem',
-                  padding: '1rem',
-                  background: '#f8f9fa',
-                  borderRadius: '8px',
-                  border: '1px solid #e9ecef'
-                }}>
+                <div key={index} className="qa-pair">
                   <div style={{
                     marginBottom: '0.5rem',
-                    fontWeight: '600',
-                    color: '#495057'
+                    fontWeight: '700',
+                    color: '#F38181'
                   }}>
                     <strong>Q:</strong> {item.question}
                   </div>
                   <div style={{
-                    color: '#212529',
+                    color: '#2c3e50',
                     lineHeight: '1.5'
                   }}>
                     <strong>A:</strong> {item.answer}
@@ -217,6 +214,10 @@ function App() {
           )}
         </div>
       )}
+
+      <footer className="footer">
+        Made with &lt;3 by <a href="https://x.com/as1fansar1" target="_blank" rel="noopener noreferrer">Asif</a>
+      </footer>
     </div>
   )
 }

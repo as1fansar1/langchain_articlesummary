@@ -198,21 +198,26 @@ async def ask_question(request: QARequest):
         # Create Q&A prompt with context
         qa_template = f"""
         You are a helpful assistant answering questions about this {content_type}.
-
+        
         Content Summary:
         {session["summary"]["summary"]}
-
+        
         Key Insights:
         {"".join(f"- {insight}\n" for insight in session["summary"]["key_insights"])}
-
+        
         Full Content:
         {content}
-
-        Answer the user's question based on the content above. Be concise but comprehensive.
-        If the question cannot be answered from the content, say so clearly.
-
-        Previous conversation context:
+        
+        History:
         {{history}}
+        
+        User Question:
+        {{question}}
+        
+        Instructions:
+        Answer the user's question directly based on the content above. 
+        Do not say "I can help with that" or "Ask your question". Just answer the question.
+        If the question cannot be answered from the content, say so clearly.
         """
 
         prompt = ChatPromptTemplate.from_template(qa_template)
